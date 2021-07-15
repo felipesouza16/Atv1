@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Ex1
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Menu menu = new Menu();
+            menu.Escolhas();
         }
+
     }
 }
