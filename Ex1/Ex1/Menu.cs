@@ -20,7 +20,7 @@ namespace Ex1
                 {
                     Console.WriteLine("------------- Menu de opções -------------");
                     Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Imprimir Produtos \n 4 - Imprimir Categorias \n 0 - Sair ");
-                    byte escolha = Convert.ToByte(Console.ReadLine());
+                    int escolha = Valida.LeituraNumero();
                     switch (escolha)
                     {
                         case 0:
@@ -46,26 +46,13 @@ namespace Ex1
             }
         }
 
-        //public void Cadastro(BaseModel model) 
-        //{
-        //    if (model.GetType() == typeof(Produto))
-        //    {
-
-        //    }
-        //    else if (model.GetType() == typeof(Categoria)) 
-        //    {
-
-        //    }
-
-        //}
-
         public void CadastroProd()
         {
             Console.Write("Digite o nome do produto: ");
-            string nome = Console.ReadLine();
+            string nome = Valida.ValidaString(); ;
 
             Console.Write("Digite o valor do produto: ");
-            decimal valor = Convert.ToDecimal(Console.ReadLine());
+            decimal valor = Valida.LeituraDecimal();
            
             Categoria categoria = ProcuraCategoria();
 
@@ -78,10 +65,10 @@ namespace Ex1
         public void CadastroCateg()
         {
             Console.Write("Digite o nome da categoria: ");
-            string nome = Console.ReadLine();
+            string nome = Valida.ValidaString();
 
             Console.Write("Digite o descricao da categoria: ");
-            string descricao = Console.ReadLine();
+            string descricao = Valida.ValidaString();
 
             Categoria categoria = new Categoria(contadorCateg, nome, descricao);
             contadorCateg++;
@@ -112,21 +99,25 @@ namespace Ex1
             {
                 Console.WriteLine("Escolhas uma das categorias abaixo, pelo Id");
                 imprimiCategoria();
-                int id = Convert.ToInt32(Console.ReadLine());
-                foreach (Categoria categ in categorias)
+                int id = Valida.LeituraNumero();
+                if (id >= 0) 
                 {
-                    if (id == categ.Id)
+                    foreach (Categoria categ in categorias)
                     {
-                        return categ;
+                        if (id == categ.Id)
+                        {
+                            return categ;
+                        }
+                    }
+                    Console.WriteLine("Categoria não encontrada!!");
+                    Console.WriteLine("Deseja cadastrar uma nova Categoria?[S/N]");
+                    string sn = Valida.validaSN();
+                    if (sn.Equals("s"))
+                    {
+                        CadastroCateg();
                     }
                 }
-                Console.WriteLine("Categoria não encontrada!!");
-                Console.WriteLine("Deseja cadastrar uma nova Categoria?[S/N]");
-                string sn = Console.ReadLine().ToLower().Trim();
-                if (sn.Equals("s"))
-                {
-                    CadastroCateg();
-                }
+                
             } while (true);
         }
 
