@@ -51,10 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cadastro.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="RepeticaoCadastro.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
