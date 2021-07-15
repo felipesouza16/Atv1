@@ -11,15 +11,6 @@ namespace Ex1
         List<Produto> produtos = new List<Produto>();
         //List<Categoria> categorias = new List<Categoria>();
         int contadorProd = 0;
-        
-        public void Cabecalho()
-        {
-            Console.WriteLine("--------------");
-        }
-
-        public void Opcoes()
-        {
-        }
         public void Escolhas()
         {
             {
@@ -46,10 +37,6 @@ namespace Ex1
                 }
             }
         }
-        public void Rodape()
-        {
-            Console.WriteLine("-------------");
-        }
         public void CadastroProd()
         {
             Console.Write("Digite o nome do produto: ");
@@ -62,9 +49,8 @@ namespace Ex1
             contadorProd++;
 
             produtos.Add(produto);
-            Console.WriteLine(produtos);
         }
-        public void ExibirDados()
+        public void ExibirProdutos()
         {
             foreach (Produto prod in produtos)
             {
