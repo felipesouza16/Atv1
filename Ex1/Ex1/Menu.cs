@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Ex1
 {
-    class Menu
+    public class Menu
     {
         List<Produto> produtos = new List<Produto>();
-        List<Categoria> categorias = new List<Categoria>();
+        //List<Categoria> categorias = new List<Categoria>();
+        int contadorProd = 0;
+        
         public void Cabecalho()
         {
             Console.WriteLine("--------------");
@@ -17,30 +19,30 @@ namespace Ex1
 
         public void Opcoes()
         {
-            Console.WriteLine("------------- Menu de opções -------------");
-            Console.WriteLine("1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - 0 - Sair ");
         }
         public void Escolhas()
         {
-            string resposta = "y";
-
             {
-                Opcoes();
-                byte escolha = Convert.ToByte(Console.ReadLine());
-                switch (escolha)
+                while (true)
                 {
-                    case 0:
-                        return;
+                    Console.WriteLine("------------- Menu de opções -------------");
+                    Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Exibir Resultados \n 0 - Sair ");
+                    byte escolha = Convert.ToByte(Console.ReadLine());
+                    switch (escolha)
+                    {
+                        case 0:
+                            return;
 
-                    case 1:
+                        case 1:
+                            CadastroProd();
+                            break;
 
-                        byte Id = 1;
-                        do CadastroProd()
+                        case 3:
+                            ExibirDados();
+                            break;
 
                         
-
-                        //case 1
-
+                    }
                 }
             }
         }
@@ -50,13 +52,24 @@ namespace Ex1
         }
         public void CadastroProd()
         {
-            byte id = 0;
-            Console.WriteLine("Nome do Produto");
+            Console.Write("Digite o nome do produto: ");
             string nome = Console.ReadLine();
-            Console.WriteLine("Descricao do produto");
-            decimal valor = Convert.ToDecimal(Console.ReadLine());
-            Produto produto = new Produto(id, nome, valor);
 
+            Console.Write("Digite o valor do produto: ");
+            decimal valor = Convert.ToDecimal(Console.ReadLine());
+
+            Produto produto = new Produto(contadorProd, nome, valor);
+            contadorProd++;
+
+            produtos.Add(produto);
+            Console.WriteLine(produtos);
+        }
+        public void ExibirDados()
+        {
+            foreach (Produto prod in produtos)
+            {
+                Console.WriteLine($" ID : {prod.Id}\n Nome : {prod.Nome}\n Valor{prod.Valor}");
+            }
         }
     }
 }
