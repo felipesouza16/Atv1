@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Ex1
 {
 
-    public class Categoria
+    struct Categoria
     {
         public int Id { get; set; }
         public string Nome { get; set; }
