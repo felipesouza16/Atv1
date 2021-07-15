@@ -19,7 +19,7 @@ namespace Ex1
                 while (true)
                 {
                     Console.WriteLine("------------- Menu de opções -------------");
-                    Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Imprimir Produtos \n 4 - Imprimir Categorias \n 0 - Sair ");
+                    Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Imprimir Produtos \n 4 - Imprimir Categorias \n 5 - Procura Produto \n 6 - Procura Categoria\n 0 - Sair ");
                     int escolha = Valida.LeituraNumero();
                     switch (escolha)
                     {
@@ -27,18 +27,40 @@ namespace Ex1
                             return;
 
                         case 1:
+                            Console.Clear();
                             CadastroProd();
                             break;
 
                         case 2:
+                            Console.Clear();
                             CadastroCateg();
                             break;
 
                         case 3:
+                            Console.Clear();
                             imprimiProduto();
                             break;
                         case 4:
+                            Console.Clear();
                             imprimiCategoria();
+                            break;
+                        case 5:
+                            Console.Clear();
+                            Console.WriteLine("Digite um nome de um produto:");
+                            string procuraProd = Valida.ValidaString();
+                            procuraProduto(procuraProd);
+                            break;
+                        case 6:
+                            Console.Clear();
+                            Console.WriteLine("Digite um nome de uma categoria:");
+                            string procuraCat = Valida.ValidaString();
+                            procuraCategoria(procuraCat);
+                            break;
+                        default:
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Opcao invalida, escolha uma das opçoes abaixo");
+                            Console.ResetColor();
                             break;
 
                     }
@@ -121,6 +143,56 @@ namespace Ex1
             } while (true);
         }
 
-       
+        public void procuraProduto(string nome)
+        {
+            if (produtos.Count.Equals(0))
+            {
+                Console.WriteLine("Sem produtos cadastrados");
+            }
+            else
+            {
+                nome = nome.ToLower();
+                foreach (var item in produtos)
+                {
+                    string aux = item.Nome;
+                    aux.ToLower();
+                    if (aux.Equals(nome))
+                    {
+                        Console.WriteLine(item);
+                        return;
+                    }
+
+                }
+                Console.WriteLine("Sem produtos cadastrados com esse nome");
+            }
+
+        }
+
+        public void procuraCategoria(string nome)
+        {
+            if (categorias.Count.Equals(0))
+            {
+                Console.WriteLine("Sem categorias cadastradas");
+            }
+            else
+            {
+                nome = nome.ToLower();
+                foreach (var item in categorias)
+                {
+                    string aux = item.Nome;
+                    aux.ToLower();
+                    if (aux.Equals(nome))
+                    {
+                        Console.WriteLine(item);
+                        return;
+                    }
+                }
+                Console.WriteLine("Sem categorias cadastradas com esse nome");
+
+            }
+
+        }
+
+
     }
 }
