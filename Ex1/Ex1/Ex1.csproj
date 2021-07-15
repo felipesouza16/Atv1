@@ -52,8 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
+<<<<<<< HEAD
     <Compile Include="Produto.cs" />
+=======
+>>>>>>> 6924c6b4859c36abe988952db33499b5840723b4
     <Compile Include="Menu.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
