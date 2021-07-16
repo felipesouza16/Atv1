@@ -19,7 +19,7 @@ namespace Ex1
                 while (true)
                 {
                     Console.WriteLine("------------- Menu de opções -------------");
-                    Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Imprimir Produtos \n 4 - Imprimir Categorias \n 5 - Procura Produto \n 6 - Procura Categoria \n 7 - Editar Produto \n 0 - Sair ");
+                    Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Imprimir Produtos \n 4 - Imprimir Categorias \n 5 - Procura Produto \n 6 - Procura Categoria \n 7 - Editar Produto \n 8 - Deletar Produto\n 0 - Sair ");
                     int escolha = Valida.LeituraNumero();
                     switch (escolha)
                     {
@@ -58,6 +58,9 @@ namespace Ex1
                             break;
                         case 7:
                             EditarProduto();
+                            break;
+                        case 8:
+                            deletaProduto();
                             break;
                         default:
                             Console.Clear();
@@ -138,6 +141,7 @@ namespace Ex1
 
         public Categoria ProcuraCategoria() 
         {
+            
             do
             {
                 Console.WriteLine("Escolhas uma das categorias abaixo, pelo Id");
@@ -262,7 +266,35 @@ namespace Ex1
             } while (true);
         }
 
+        public void deletaProduto() 
+        {
+            do
+            {
+                Console.WriteLine("Escolhas um dos Produtos abaixo, pelo Id para deletar");
+                imprimiProduto();
+                int id = Valida.LeituraNumero();
+                if (id >= 0)
+                {
+                    foreach (Produto produ in produtos)
+                    {
+                        if (id == produ.Id)
+                        {
+                            produtos.Remove(produ);
+                            return;
+                        }
+                    }
+                    Console.WriteLine("Produto não encontrado!!");
+                    Console.WriteLine("Deseja voltar para o Menu?[S/N]");
+                    string sn = Valida.validaSN();
+                    if (sn.Equals("s"))
+                    {
+                        return;
+                    }
+                }
 
+            } while (true);
+
+        }
 
     }
 }

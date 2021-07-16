@@ -21,7 +21,7 @@ namespace Ex1.Models
         }
         public override string ToString()
         {
-            return $" |ID: {Id}\n |Nome : {Nome}\n |Valor: {Valor.ToString("F2")}\n |Nome da Categoria: {Categoria.Nome} |Descrição da Categoria: {Categoria.Descricao} \n\n";
+            return $" |ID: {Id}\n |Nome : {Nome}\n |Valor: R${Valor.ToString("F2").Replace(',','.')}\n |Nome da Categoria: {Categoria.Nome} |Descrição da Categoria: {Categoria.Descricao} \n\n";
         }
 
     }
