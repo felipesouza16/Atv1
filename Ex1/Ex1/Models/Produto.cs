@@ -21,7 +21,7 @@ namespace Ex1.Models
         }
         public override string ToString()
         {
-            return $" |ID: {Id}\n |Nome : {Nome}\n |Valor: {Valor}\n |Nome da Categoria: {Categoria.Nome} |Descrição da Categoria: {Categoria.Descricao}";
+            return $" |ID: {Id}\n |Nome : {Nome}\n |Valor: {Valor}\n |Nome da Categoria: {Categoria.Nome} |Descrição da Categoria: {Categoria.Descricao} \n\n";
         }
 
     }

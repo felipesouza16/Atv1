@@ -20,7 +20,7 @@ namespace Ex1.Models
 
         public override string ToString()
         {
-            return $" |ID: {Id}\n |Nome: {Nome}\n |Descrição: {Descricao}\n";
+            return $" |ID: {Id}\n |Nome: {Nome}\n |Descrição: {Descricao}\n\n";
         }
     }
 

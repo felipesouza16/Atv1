@@ -107,8 +107,13 @@ namespace Ex1
         }
         public void imprimiProduto()
         {
-            foreach (Produto prod in produtos)
+            if (produtos.Count.Equals(0))
             {
+                Console.WriteLine("Sem produtos cadastrados");
+            }
+            else
+            {
+                foreach (Produto prod in produtos)
                 Console.WriteLine(prod);
             }
 
@@ -117,8 +122,13 @@ namespace Ex1
 
         public void imprimiCategoria() 
         {
-            foreach (Categoria categ in categorias)
+            if (categorias.Count.Equals(0))
             {
+                Console.WriteLine("Sem categorias cadastradas");
+            }
+            else
+            {
+                foreach (Categoria categ in categorias)
                 Console.WriteLine(categ);
             }
         }
