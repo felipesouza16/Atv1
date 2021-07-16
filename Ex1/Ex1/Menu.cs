@@ -71,12 +71,20 @@ namespace Ex1
         public void CadastroProd()
         {
             Console.Write("Digite o nome do produto: ");
-            string nome = Valida.ValidaString(); ;
+            string nome = Valida.ValidaString(); 
 
             Console.Write("Digite o valor do produto: ");
             decimal valor = Valida.LeituraDecimal();
-           
-            Categoria categoria = ProcuraCategoria();
+
+            if (produtos.Count.Equals(0))
+            {
+                Console.WriteLine("Nenhuma categoria cadastrada.Primeiro Cadastre uma categoria.");
+                CadastroCateg();
+
+            }
+
+            Categoria categoria = categoria = ProcuraCategoria();   
+            
 
             Produto produto = new Produto(contadorProd, nome, valor, categoria);
             contadorProd++;
