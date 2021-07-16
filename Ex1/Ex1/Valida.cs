@@ -30,7 +30,7 @@ namespace Ex1
                 decimal retorno = -1;
                 try
                 {
-                    retorno = Convert.ToDecimal(Console.ReadLine());
+                    retorno = Convert.ToDecimal(Console.ReadLine().ToString().Replace(',','.'));
                     if (retorno > 0)
                     {
                         return retorno;
