@@ -19,7 +19,7 @@ namespace Ex1
                 while (true)
                 {
                     Console.WriteLine("------------- Menu de opções -------------");
-                    Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Imprimir Produtos \n 4 - Imprimir Categorias \n 5 - Procura Produto \n 6 - Procura Categoria\n 0 - Sair ");
+                    Console.WriteLine(" 1 - Cadastro de Produto \n 2 - Cadastro de Categoria \n 3 - Imprimir Produtos \n 4 - Imprimir Categorias \n 5 - Procura Produto \n 6 - Procura Categoria \n 7 - Editar Produto \n 0 - Sair ");
                     int escolha = Valida.LeituraNumero();
                     switch (escolha)
                     {
@@ -55,6 +55,9 @@ namespace Ex1
                             Console.WriteLine("Digite um nome de uma categoria:");
                             string procuraCat = Valida.ValidaString();
                             procuraCategoria(procuraCat);
+                            break;
+                        case 7:
+                            EditarProduto();
                             break;
                         default:
                             Console.Clear();
@@ -210,6 +213,55 @@ namespace Ex1
             }
 
         }
+
+        public void EditarProduto() 
+        {   string nome ;
+            decimal valor ;
+            Categoria cat;
+
+            do
+            {
+                Console.WriteLine("Escolhas um dos Produtos abaixo, pelo Id");
+                imprimiProduto();
+                int id = Valida.LeituraNumero();
+                if (id >= 0)
+                {
+                    foreach (Produto produ in produtos)
+                    {
+                        if (id == produ.Id)
+                        {
+                            Console.WriteLine("Você vai editar este produto:");
+                            Console.WriteLine(produ);
+                            Console.WriteLine("Digite o que você deseja alterar. Caso contrario digite 0!");
+                            Console.Write("Nome: ");
+                            nome = Console.ReadLine();
+                            if (!nome.Equals("0")) 
+                            {
+                                produ.Nome = nome;
+                            }
+                            Console.Write("Valor: ");
+                            valor = Convert.ToDecimal(Console.ReadLine());
+                            if(valor != 0) 
+                            {
+                                produ.Valor = valor;
+                            }
+                            cat = ProcuraCategoria();
+                            produ.Categoria = cat;
+                            return;
+                        }
+                    }
+                    Console.WriteLine("Produto não encontrado!!");
+                    Console.WriteLine("Deseja cadastrar uma novo Produto?[S/N]");
+                    string sn = Valida.validaSN();
+                    if (sn.Equals("s"))
+                    {
+                        CadastroProd();
+                    }
+                }
+
+            } while (true);
+        }
+
 
 
     }
